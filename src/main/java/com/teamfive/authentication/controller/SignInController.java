@@ -1,5 +1,7 @@
 package com.teamfive.authentication.controller;
 
+import com.teamfive.authentication.dto.CredentialsDto;
+import com.teamfive.authentication.dto.ResponseDto;
 import com.teamfive.authentication.dto.UserDto;
 import com.teamfive.authentication.entity.User;
 import com.teamfive.authentication.service.UserService;
@@ -12,21 +14,20 @@ public class SignInController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/login")
-    public String login(@RequestParam String emailId,@RequestParam String password){
-        User userExists = userService.find(emailId);
+    @PostMapping("auth/login")
+    public ResponseDto login(@RequestBody CredentialsDto credentialsDto){
+        User userExists = userService.find(credentialsDto.getEmail());
         System.out.println(userExists);
         if(userExists != null){
-            if(userExists.getPassword().equals(password)) {
-
-                return ("you are now logged in");
+            if(userExists.getPassword().equals(credentialsDto.getPassword())) {
+                return new ResponseDto("SUCESSS",credentialsDto.getEmail());
             }
             else{
-                return ("passwrod is wrong");
+                return new ResponseDto("FAILED","Email-ID or Password is incorrect");
             }
         }
         else{
-            return ("Emaill not existed");
+            return new ResponseDto("FAILED","Email-ID or Password is incorrect");
         }
 
     }
