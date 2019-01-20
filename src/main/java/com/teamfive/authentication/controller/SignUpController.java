@@ -13,7 +13,7 @@ public class SignUpController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("auth/register")
+    @PostMapping(value = "auth/register",produces = {"application/json"}, consumes = {"application/json","application/x-www-form-urlencoded;charset=UTF-8"})
     public ResponseDto add(@RequestBody UserDto userDto) {
         // System.out.println(userDto);
         User userExists = userService.find(userDto.getEmailId());
@@ -29,7 +29,7 @@ public class SignUpController {
         }
     }
 
-    @GetMapping("auth/find")
+    @GetMapping(value = "auth/find")
     public UserDto find(@RequestParam String emailId){
         UserDto userDto=new UserDto();
         User user=userService.find(emailId);

@@ -1,7 +1,7 @@
 package com.teamfive.authentication.dto;
 
 public class CredentialsDto {
-    private String email;
+    private String emailId;
 
     public String getPassword() {
         return password;
@@ -13,18 +13,19 @@ public class CredentialsDto {
 
     private String password;
 
-    public String getEmail() {
-        return email;
+
+    public String getEmailId() {
+        return emailId;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
     }
 
     @Override
     public String toString() {
         return "CredentialsDto{" +
-                "email='" + email + '\'' +
+                "emailId='" + emailId + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }
