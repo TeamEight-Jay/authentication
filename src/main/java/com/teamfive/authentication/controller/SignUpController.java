@@ -6,6 +6,7 @@ import com.teamfive.authentication.entity.User;
 import com.teamfive.authentication.service.UserService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -13,7 +14,7 @@ public class SignUpController {
     @Autowired
     private UserService userService;
 
-    @PostMapping(value = "auth/register",produces = {"application/json"}, consumes = {"application/json","application/x-www-form-urlencoded;charset=UTF-8"})
+    @PostMapping(value = "auth/register")
     public ResponseDto add(@RequestBody UserDto userDto) {
         // System.out.println(userDto);
         User userExists = userService.find(userDto.getEmailId());

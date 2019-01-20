@@ -7,6 +7,7 @@ import com.teamfive.authentication.entity.User;
 import com.teamfive.authentication.service.UserService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -14,7 +15,7 @@ public class SignInController {
     @Autowired
     private UserService userService;
 
-    @PostMapping(value = "auth/login",produces = {"application/json"}, consumes = {"application/json","application/x-www-form-urlencoded;charset=UTF-8"})
+    @PostMapping(value = "auth/login")
     public ResponseDto login(@RequestBody CredentialsDto credentialsDto){
         User userExists = userService.find(credentialsDto.getEmailId());
         System.out.println(userExists);
