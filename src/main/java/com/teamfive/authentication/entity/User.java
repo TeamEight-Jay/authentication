@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -14,7 +15,7 @@ public class User{
     public static final String TABLE_NAME="CUSTOMER";
     @Id
     @Column(name = "emailId", nullable = false, unique = true)
-    @Email(message = "Please provide a valid e-mail")
+    @Pattern(regexp = "^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$")
     @NotEmpty(message = "Please provide an e-mail")
     private String emailId;
     private String firstName;

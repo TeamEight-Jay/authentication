@@ -26,7 +26,7 @@ public class SignUpController {
             BeanUtils.copyProperties(userDto,user);
             User userCreated=userService.add(user);
             BeanUtils.copyProperties(userCreated, userDto);
-            return new ResponseDto("SUCESSS","Registration Successfull");
+            return new ResponseDto("SUCCESS","Registration Successful");
         }
     }
 
