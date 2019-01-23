@@ -14,7 +14,7 @@ public class SignUpController {
     @Autowired
     private UserService userService;
 
-    @PostMapping(value = "auth/register")
+    @PostMapping(value = "auth/signup")
     public ResponseDto add(@RequestBody UserDto userDto) {
         // System.out.println(userDto);
         User userExists = userService.find(userDto.getEmailId());

@@ -15,13 +15,13 @@ public class SignInController {
     @Autowired
     private UserService userService;
 
-    @PostMapping(value = "auth/login")
+    @PostMapping(value = "auth/signin")
     public ResponseDto login(@RequestBody CredentialsDto credentialsDto){
         User userExists = userService.find(credentialsDto.getEmailId());
         System.out.println(userExists);
         if(userExists != null){
             if(userExists.getPassword().equals(credentialsDto.getPassword())) {
-                return new ResponseDto("SUCESSS",credentialsDto.getEmailId());
+                return new ResponseDto("SUCCESS",credentialsDto.getEmailId());
             }
             else{
                 return new ResponseDto("FAILED","Email-ID or Password is incorrect");
