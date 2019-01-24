@@ -1,5 +1,6 @@
 package com.teamfive.authentication.dto;
 
+
 public class CredentialsDto {
     private String emailId;
 

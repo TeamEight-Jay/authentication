@@ -14,7 +14,6 @@ import javax.validation.constraints.Size;
 public class User{
     public static final String TABLE_NAME="CUSTOMER";
     @Id
-    @Column(name = "emailId", nullable = false, unique = true)
     @Pattern(regexp = "^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$")
     @NotEmpty(message = "Please provide an e-mail")
     private String emailId;

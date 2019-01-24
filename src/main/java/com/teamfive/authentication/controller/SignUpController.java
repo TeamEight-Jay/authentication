@@ -34,6 +34,7 @@ public class SignUpController {
     public UserDto find(@RequestParam String emailId){
         UserDto userDto=new UserDto();
         User user=userService.find(emailId);
+        if(user==null) return null;
         BeanUtils.copyProperties(user,userDto);
         return userDto;
     }
